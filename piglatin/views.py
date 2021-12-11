@@ -29,7 +29,7 @@ def translate(input):
 
 class TranslateView(RetrieveAPIView):
 
-    def get(self, request):
+    def post(self, request):
         try:
             input = request.data['input']
             results = translate(input)

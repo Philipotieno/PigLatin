@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>JavaScript | fetch() Method</title>
+  </head>
+
+  <body>
+    <form id="myForm" name="myForm">
+      <div>
+        <input type="text" id="input" name="input" value="" />
+      </div>
+      <input type="button" value="Submit!" onclick="submitInfo();" />
+    </form>
+    <p>Results=</p>
+    <script>
+      // API for get requests
+      function submitInfo() {
+        let form = document.forms['myForm'];
+        let fd = new FormData(form);
+        let data = {};
+        for (let [key, prop] of fd) {
+          data[key] = prop;
+        }
+        VALUE = JSON.stringify(data, null, 2);
+        const myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        let url = 'http://127.0.0.1:8000/api/translate';
+        fetch(url, {
+          method: 'POST',
+          headers: myHeaders,
+          mode: 'cors',
+          cache: 'default',
+          body: VALUE,
+        })
+          // fetchRes is the promise to resolve
+          // it by using.then() method
+          .then((data) => data.json())
+          .then((data) => {
+            console.log(data.result);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>

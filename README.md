@@ -5,84 +5,39 @@
 #### Python 3.8.2
 
 ### Create the virtual environment
-
 ```bash
-
+virtualenv -p python3 venv
 ```
-
-- `$ virtualenv -p python3 venv`
-
-```
-
-```
-
 ### Activate the virtual environment
-
 ```bash
-
+source venv/bin/activate
 ```
-
-- `$ source venv/bin/activate`
-
-```
-
-```
-
 ### Install dependencies
-
 ```bash
-
+pip install -r requirements.txt
 ```
-
-- `$ pip install -r requirements.txt`
-
-```
-
-```
-
 ### To run the app locally
-
 ```bash
-
+python manage.py runserver
 ```
-
-- `$ python manage.py runserver`
-
-```
-
-```
-
 ### To run the app on docker
-
-```bash
-
-```
-
 - Build the image
-  - `$ docker-compose up --build -d`
+    ```bash
+        docker-compose up --build -d
+    ```
 - Test on postman
   - `http://127.0.0.1:8001/api/translate`
 
-```
-
-```
-
-![Docker](http://url/to/img.png)
+![Docker](https://github.com/Philipotieno/PigLatin/blob/develop/docker.png)
 
 ### To deploy the microservice on a kubernetes cluster
-
 ```bash
-
+    kubectl apply -f deployment.yaml
 ```
-
-- `$ kubectl apply -f deployment.yaml`
-- `minikube service translate-service`
-
+```bash
+    minikube service translate-service
+```
 - Test on postman
   - `http://127.0.0.1:8001/api/translate`
 
-```
-
-```
-
-![Docker](http://url/to/img.png)
+![Docker](https://github.com/Philipotieno/PigLatin/blob/develop/k8.png)

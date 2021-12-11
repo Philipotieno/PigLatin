@@ -29,6 +29,6 @@ spec:
       containers:
       - name: translate-app
         image: mudu_web
-        imagePullPolicy: IfNotPresent
+        command: python manage.py runserver 0.0.0.0:8001
         ports:
         - containerPort: 5000
